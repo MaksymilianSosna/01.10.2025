@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button style="width: 100px; height: 50px;" id="przycisk"></button>
+    <textarea style="width: 200px; height: 200px;" name="" id="poletekstowe"></textarea>
+    <form action="">
+        <input type="name" id="imie">
+        <br>
+        <input type="password" id="haslo">
+        <br>
+        <input type="number" id="wiek">
+        <br>
+        <br>
+        <br>
+        <input type="password" id="hasloTwo">
+        <br>
+        <input type="password" id="hasloTwoSprawdza">
+    </form>
+    <button onclick="sprawdzaImie()">Wyślij</button>
+    <button onclick="sprawdzaHaslo()">Sprawdź Hasło</button>
+    <button onclick="sprawdzaWiek()">Sprawdź Wiek</button>
+    <button onclick="sprawdzaHasla()">Sprawdź czy hasła są poprawne</button>
+    <script>
+
+    //Zadanie 1:
+    //Napisz funkcję, która wyświetla współrzędne kliknięcia użytkownika w dowolnym miejscu na stronie.
+
+    document.addEventListener('click', function(event) {
+        console.log('Kliknięto przycisk na pozycji X:', event.clientX, 'Y:',
+        event.clientY);
+    });
+
+    //Zadanie 2:
+    //Napisz skrypt, który zmienia kolor przycisku na niebieski, gdy zostanie na niego najechana myszka
+    //(mouseover), a na czerwony, gdy myszka zostanie z niego usunięta (mouseout).
+
+    let przycisk = document.getElementById("przycisk")
+
+    przycisk.addEventListener('mouseover', function(){
+        przycisk.style.backgroundColor = "blue";
+    });
+
+    przycisk.addEventListener('mouseout', function(){
+        przycisk.style.backgroundColor = "Red";
+    });
+
+    //Zadanie 3:
+    //Napisz funkcję, która dodaje do pola tekstowego komunikat „Domyślna wartość”, gdy zostanie
+    //dwukrotnie kliknięte.
+
+    let textarea = document.getElementById("poletekstowe");
+
+    textarea.addEventListener('dblclick', function(){
+        textarea.value = "Domyślna wartość";
+    });
+
+    //Zadanie 4:
+    //Stwórz formularz z polem tekstowym „Imię” oraz przyciskiem „Wyślij”. Napisz walidację, która
+    //sprawdza, czy użytkownik wprowadził imię (pole nie może być puste).
+
+    let imie = document.getElementById("imie");
+    function sprawdzaImie() {
+        if(imie.value.length == 0){
+            alert("pole nie może być puste")
+        }
+    }
+
+    //Zadanie 5:
+    //Napisz skrypt, który sprawdza, czy hasło wprowadzone w formularzu ma co najmniej 8 znaków oraz czy
+    //zawiera co najmniej jedną liczbę.
+
+    let haslo = document.getElementById("haslo");
+
+    function sprawdzaHaslo(){
+        if(!/\d/.test(haslo)){
+            alert("pole musi zawierać jedną liczbę")
+        }
+        else if(haslo.value.length < 8){
+            alert("pole musi zawierać conajmniej 8 znaków");
+        }
+    }
+
+    //Zadanie 6:
+    //Stwórz formularz, w którym użytkownik wpisuje swój wiek. Napisz walidację, która sprawdza, czy
+    //wprowadzony wiek jest liczbą i czy mieści się w przedziale 18-100
+
+    let wiek = document.getElementById("wiek");
+
+    function sprawdzaWiek(){
+        if(wiek.value > 17 && wiek.value < 101){
+            alert("Mieścisz się w przedziale od 18 do 100");
+        }else{
+            alert("Nie mieścisz się w przedziale od 18 do 100")
+        }
+    }
+
+    //Zadanie 7:
+    //Napisz skrypt, który sprawdza, czy dwa pola „Hasło” i „Potwierdzenie hasła” w formularzu mają tę samą
+    //wartość. Jeśli nie, wyświetl komunikat o błędzie.
+
+    let hasloTwo = document.getElementById("hasloTwo");
+    let hasloTwoSprawdza = document.getElementById("hasloTwoSprawdza");
+
+    if(hasloTwo.value == hasloTwoSprawdza.value){
+
+    }else{
+        alert("Błąd")
+    }
+
+    </script>
+</body>
+</html>
